@@ -5,9 +5,9 @@
         <% include ../general/msg %>
 
         <form method="post" action="/signup">
-            <input type="text" id="username" name="username" size="35" maxlength="40" placeholder="<%= i18n._username %>" value="alditis" />
-            <input type="text" id="email" name="email" size="35" maxlength="40" placeholder="<%= i18n._email %>" value="alditis@gmail.com"/>
-            <input type="password" id="password" name="password" size="15" maxlength="20" placeholder="<%= i18n._password %>" value="123456"/>
+            <input type="text" id="username" name="username" size="35" maxlength="40" placeholder="<%= i18n._username %>"/>
+            <input type="text" id="email" name="email" size="35" maxlength="40" placeholder="<%= i18n._email %>"/>
+            <input type="password" id="password" name="password" size="15" maxlength="20" placeholder="<%= i18n._password %>"/>
             <p class="note mb-2"><%- i18n.noteTermsConditions %></p>
             <input type="submit" id="send" value="<%= i18n._createAccount %>">
         </form>

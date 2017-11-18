@@ -69,7 +69,7 @@ module.exports = {
             min: process.env.DB_POOL_MIN,
             idle: process.env.DB_POOL_IDLE
         },
-        logging: process.env.DB_LOGGING
+        logging: PER.helper.getDBLogging(process.env.DB_LOGGING)
     },
 
     /**
@@ -80,10 +80,10 @@ module.exports = {
         user: process.env.EMAIL_USER,
         password: process.env.EMAIL_PASSWORD,
         host: process.env.EMAIL_HOST,
-        // ssl: process.env.EMAIL_SSL,
+        ssl: PER.helper.getBoolean(process.env.EMAIL_SSL),
         port: process.env.EMAIL_PORT,
         signup: process.env.EMAIL_SIGNUP,
-        tls: true
+        tls: PER.helper.getBoolean(process.env.EMAIL_TLS)
     },
 
     /**
@@ -141,7 +141,7 @@ module.exports = {
     session: {
         secret: process.env.SESSION_WORD,
         maxAge: parseInt(process.env.SESSION_AGE),
-        httpOnly: PER.helper.getBoolean(process.env.SESSION_ONLY_HTTP)
+        httpOnly: process.env.SESSION_ONLY_HTTP
     },
 
     /**

@@ -36,7 +36,7 @@ const sequelize = new Sequelize(
             deletedAt: 'deleted',
             version: 'locking'
         },
-        logging: PER.helper.getDBLogging(PER.config.db.logging)
+        logging: PER.config.db.logging
     }
 );
 

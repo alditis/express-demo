@@ -13,9 +13,36 @@ const bcrypt = require('bcrypt');
 const http = require('http');
 const ejs = require('ejs');
 
-const ejsRender = (str, data = null) => {
-    return ejs.render(str, data);
-}
+const callbackEmail = (err, initSession, req, res, user) => {
+    if (err) {
+        PER.log.error(err.message);
+        throw new Error('errInternalSendMail');
+    } else if (initSession) {
+        return login(req, res, user);
+    }
+};
+
+const capitalize = str => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+const compareHash = (hash, value) => {
+    return bcrypt
+        .compare(hash, value)
+        .then(equals => {
+            if (equals) {
+                return true;
+            }
+            throw new Error('errHashCompare');
+        })
+        .catch(err => {
+            if (err.message === 'errHashCompare') {
+                throw err;
+            } else {
+                throw new Error('errInternalHashCompare');
+            }
+        });
+};
 
 const dump = (arr, print = true, level = 0) => {
     try {
@@ -58,22 +85,28 @@ const dump = (arr, print = true, level = 0) => {
     }
 };
 
-const sanitize = data => {
-    const result = {};
-    for (const key in data) {
-        if (Object.prototype.hasOwnProperty.call(data, key)) {
-            result[key] = dompurify.sanitize(data[key]);
+const ejsRender = (str, data = null) => {
+    return ejs.render(str, data);
+}
+
+const error = (err, req, obj, uri = '', data = null) => {
+    PER.log.error(err.message);
+    req.flash('msgErr', err.message);
+
+    if (data) {
+        if (data.email) {
+            req.flash('email', data.email);
+        }
+
+        if (data.username) {
+            req.flash('username', data.username);
         }
     }
-    return result;
-};
 
-const getUserFromEmail = email => {
-    return email.split('@')[0];
-};
-
-const getProviderName = providerType => {
-    return PER.const.PROVIDERS[providerType];
+    if (obj instanceof http.ServerResponse) {
+        return obj.redirect(uri);
+    }
+    return obj(null, false);
 };
 
 const generateUsername = user => {
@@ -105,70 +138,14 @@ const generateUsernameProviderId = user => {
     return user.provider_id + getProviderName(user.provider_type);
 };
 
-const inSession = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-
-    res.redirect('/login');
-};
-
-const noCacheRoute = (req, res, next) => {
-    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.header('Expires', '-1');
-    res.header('Pragma', 'no-cache');
-    next();
-};
-
-const isAuthenticated = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        return res.redirect('/user/' + PER.config.app.uriWelcome);
-    }
-    next();
-};
-
-const capitalize = str => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-};
-
-const maskEmail = str => {
-    const pos = str.indexOf('@');
-    return str[0] + '...' + str[pos - 1] + str.slice(pos);
-};
-
-const randomString = () => {
-    return randomstring.generate();
-};
-
-const getToken = () => {
-    return crypto.randomBytes(PER.const.TOKEN_SIZE).toString('hex');
-};
-
-const getTokenExpires = () => {
-    return Date.now() + PER.const.TOKEN_EXPIRES_TIME;
-};
-
 const getBaseUrl = req => {
     return req.protocol + '://' + req.headers.host + '/';
 };
 
-const login = (req, res, user) => {
-    req.login(user, err => {
-        if (err) {
-            PER.log.error(err.message);
-            throw new Error('errInitSession');
-        }
-        return res.redirect('/user/' + PER.config.app.uriWelcome);
-    });
-};
+const getBoolean = function(val){
+    var falsy = /^(?:f(?:alse)?|no?|0+)$/i;
 
-const callbackEmail = (err, initSession, req, res, user) => {
-    if (err) {
-        PER.log.error(err.message);
-        throw new Error('errInternalSendMail');
-    } else if (initSession) {
-        return login(req, res, user);
-    }
+    return !falsy.test(val) && !!val;
 };
 
 const getDBLogging = val => {
@@ -177,28 +154,6 @@ const getDBLogging = val => {
         result = console.log;
     }
     return result;
-};
-
-const isHiddenPath = path => {
-    return (/(^|\/)\./g).test(path);
-};
-
-const compareHash = (hash, value) => {
-    return bcrypt
-        .compare(hash, value)
-        .then(equals => {
-            if (equals) {
-                return true;
-            }
-            throw new Error('errHashCompare');
-        })
-        .catch(err => {
-            if (err.message === 'errHashCompare') {
-                throw err;
-            } else {
-                throw new Error('errInternalHashCompare');
-            }
-        });
 };
 
 const getHash = value => {
@@ -220,24 +175,75 @@ const getHash = value => {
         });
 };
 
-const error = (err, req, obj, uri = '', data = null) => {
-    PER.log.error(err.message);
-    req.flash('msgErr', err.message);
+const getProviderName = providerType => {
+    return PER.const.PROVIDERS[providerType];
+};
 
-    if (data) {
-        if (data.email) {
-            req.flash('email', data.email);
-        }
+const getToken = () => {
+    return crypto.randomBytes(PER.const.TOKEN_SIZE).toString('hex');
+};
 
-        if (data.username) {
-            req.flash('username', data.username);
-        }
+const getTokenExpires = () => {
+    return Date.now() + PER.const.TOKEN_EXPIRES_TIME;
+};
+
+const getUserFromEmail = email => {
+    return email.split('@')[0];
+};
+
+const inSession = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        return next();
     }
 
-    if (obj instanceof http.ServerResponse) {
-        return obj.redirect(uri);
+    res.redirect('/login');
+};
+
+const isAuthenticated = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        return res.redirect('/user/' + PER.config.app.uriWelcome);
     }
-    return obj(null, false);
+    next();
+};
+
+const isHiddenPath = path => {
+    return (/(^|\/)\./g).test(path);
+};
+
+const login = (req, res, user) => {
+    req.login(user, err => {
+        if (err) {
+            PER.log.error(err.message);
+            throw new Error('errInitSession');
+        }
+        return res.redirect('/user/' + PER.config.app.uriWelcome);
+    });
+};
+
+const maskEmail = str => {
+    const pos = str.indexOf('@');
+    return str[0] + '...' + str[pos - 1] + str.slice(pos);
+};
+
+const noCacheRoute = (req, res, next) => {
+    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    res.header('Expires', '-1');
+    res.header('Pragma', 'no-cache');
+    next();
+};
+
+const randomString = () => {
+    return randomstring.generate();
+};
+
+const sanitize = data => {
+    const result = {};
+    for (const key in data) {
+        if (Object.prototype.hasOwnProperty.call(data, key)) {
+            result[key] = dompurify.sanitize(data[key]);
+        }
+    }
+    return result;
 };
 
 const validate = (req, rule, ofBody = true) => {
@@ -267,12 +273,6 @@ const validate = (req, rule, ofBody = true) => {
         withErrors = false;
     }
     return {withErrors, data};
-};
-
-const getBoolean = function(val){
-    var falsy = /^(?:f(?:alse)?|no?|0+)$/i;
-
-    return !falsy.test(val) && !!val;
 };
 
 module.exports = {

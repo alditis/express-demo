@@ -80,9 +80,10 @@ module.exports = {
         user: process.env.EMAIL_USER,
         password: process.env.EMAIL_PASSWORD,
         host: process.env.EMAIL_HOST,
-        ssl: process.env.EMAIL_SSL,
+        // ssl: process.env.EMAIL_SSL,
         port: process.env.EMAIL_PORT,
-        signup: process.env.EMAIL_SIGNUP
+        signup: process.env.EMAIL_SIGNUP,
+        tls: true
     },
 
     /**

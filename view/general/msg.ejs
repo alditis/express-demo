@@ -1,0 +1,19 @@
+<% if (flash.msgErr) {
+
+    var msgErr = i18n[flash.msgErr];
+
+    if (msgErr && flash.emailError) {
+        msgErr = msgErr.replace(':email:', flash.emailError);
+    }
+%>
+    <p class="alert alert-warning" role="alert"><%- msgErr %></p>
+
+<% } %>
+
+<% if (flash.msgValidate) { %>
+    <ul class="alert alert-warning" role="alert">
+        <% for (msg of flash.msgValidate) { %>
+            <ol class="pl-0"><%- i18n[msg] %></ol>
+        <% } %>
+    </ul>
+<% } %>

@@ -1,0 +1,30 @@
+<% include ../general/header %>
+<body>
+    <div class="form mt-5 mx-auto">
+        <% include ../general/logo %>
+
+        <form method="post" action="/reset">
+            <h4 class="mt-3 mb-3 text-center">
+                <%= i18n._resetYourPassword %>
+            </h4>
+            <input type="password" id="password" name="password" size="15" maxlength="20" placeholder="<%= i18n._password %>"/>
+            <input type="hidden" id="token" name="token" value="<%= data.token %>"/>
+            <input type="hidden" id="email" name="email" value="<%= data.email %>"/>
+            <input type="submit" id="send" value="<%= i18n._updatePassword %>">
+        </form>
+    </div>
+
+    <% include ../general/lang %>
+    <% include ../general/footer %>
+
+    <script>
+        $('#password').focus();
+        $('#send').prop('disabled', true);
+
+        $('#password').keyup(function(){
+            var isDisabled = ($('#password').val() == '');
+            $('#send').prop('disabled', isDisabled);
+        });
+    </script>
+</body>
+</html>

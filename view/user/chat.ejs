@@ -1,0 +1,33 @@
+<% include ../general/header %>
+<body>
+    <% include menu %>
+
+    <div class="text-center m-5 mx-auto">
+        <ul id="chat" class="chat"></ul>
+        <form action="">
+            <input id="msg" autocomplete="off"/><button><%= i18n._send %></button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <% include ../general/lang %>
+    <% include ../general/footer %>
+    <script>
+        $(function () {
+            var socket = io();
+
+            $('form').submit(function(){
+                const user = '<%- user.getDisplayName() %>';
+                socket.emit('chatSendMsg', $('#msg').val(), user);
+                $('#msg').val('');
+                return false;
+            });
+
+            socket.on('chatSendMsg', function(msg, user){
+                const name = '<%= user.getDisplayName() %>';
+                $('#chat').append($('<li class="clearfix mx-auto"><div class="float-left">' + msg + '</div><div class="float-right">' + user + '</div>'));
+            });
+        });
+    </script>
+</body>
+</html>

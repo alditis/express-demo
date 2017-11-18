@@ -1,0 +1,21 @@
+<% include ../general/header %>
+<body>
+    <div class="form mt-5 mx-auto">
+        <% include ../general/logo %>
+        <form method="post" action="/activate/account">
+            <h4 class="mt-3 mb-3 text-center">
+                <%= i18n._sendAgainActivateAccountEmail %>
+            </h4>
+            <div class="alert alert-warning" role="alert">
+                <%- i18n.msgInitSendAgainActivateAccount %>
+            </div>
+            <div class="note mb-3 text-center">
+                <%= i18n._sendTo %>: <b><%- email %></b>
+            </div>
+            <input type="hidden" id="email" name="email" value="<%= email %>"/>
+            <input type="submit" id="send" value="<%= i18n._sendAgain %>">
+        </form>
+    </div>
+    <% include ../general/footer %>
+</body>
+</html>

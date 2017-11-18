@@ -1,0 +1,12 @@
+<% include ../general/header %>
+<body>
+    <% include menu %>
+
+    <div class="text-center m-5 mx-auto">
+        <%= i18n._welcome %> <b><%= user.getDisplayName() %></b>
+    </div>
+
+    <% include ../general/lang %>
+    <% include ../general/footer %>
+</body>
+</html>

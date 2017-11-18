@@ -1,0 +1,18 @@
+<% include header %>
+<body>
+    <div class="form mt-5 mx-auto">
+        <% include logo %>
+        <h2><%= i18n.error %></h2>
+        <% if (error.status == 404) { %>
+        <div class="alert alert-danger">
+            <%= i18n.errPageNotFound %>
+        </div>
+        <% } else { %>
+        <div class="alert alert-danger">
+            <%= i18n.errInternalGeneral %>
+        </div>
+        <% } %>
+        <% include footer %>
+    </div>
+</body>
+</html>

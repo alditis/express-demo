@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+.form {
+    width: 20em;
+}
+
+a {
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color .3s ease;
+    padding: 0.2em;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    height: 3em;
+    width: 100%;
+    display: block;
+    margin-bottom: 0.5em;
+    padding: 0.7em;
+    border: 0.05em solid #e6e6e6;
+    border-radius: 0.1em;
+    color: #4f4f4f;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    -webkit-transition: border .2s ease;
+    -moz-transition: border .2s ease;
+    -o-transition: border .2s ease;
+    transition: border .2s ease;
+    border: 0.05em solid #d9d9d9;
+    border-left: 0.1em solid #ffcd46;
+}
+
+input[type=submit] {
+    color: #000000;
+    background-color: #ffcd46;
+    transition: all .1s ease;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #ffef68;
+    color: #000000;
+}
+
+input[type=submit]:disabled,
+input[type=submit][disabled] {
+    background-color: #f0f0b0;
+    color: #888888;
+}
+
+.footer {
+    text-align: center;
+    font-size: 0.8em;
+    color: #000000;
+    height: 18px;
+    padding: 6px 0px 0px 0px;
+    margin: 10px 0px;
+}
+
+.note {
+    margin: 0em;
+    font-size: 0.8em;
+    color: #777777;
+    padding: 0.4em 2.2em;
+    text-align: justify;
+}
+
+.note a {
+    padding: 0.3em;
+    font-size: inherit;
+}
+
+.note a:hover {
+    text-decoration: inherit;
+}
+
+.lang {
+    font-size: 0.9em;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+.lang a {
+   -webkit-border-radius: 0.5em;
+    -o-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    border-radius: 0.5em;
+    border: 0.05em solid #BBBBBB;
+    padding: 0.5em;
+}
+
+.lang a:hover {
+    text-decoration: inherit;
+}
+
+.lang-active {
+   pointer-events: none;
+   cursor: default;
+   color: #555555;
+}
+
+.chat {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat li {
+    margin: auto 0;
+    padding: 5px 10px;
+    width: 100%;
+}
+
+.chat li:nth-child(odd) {
+    background: #eee;
+}
+
+/**
+* Bootstrap
+**/
+.btn-social-icon {
+    border-width: 0em;
+    margin: 0.2em 0.1em;
+}
+
+.alert{
+    font-size: 0.8em;
+}

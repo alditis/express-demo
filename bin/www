@@ -1,0 +1,79 @@
+#!/usr/bin/env node
+
+/**
+ * www module.
+ * @module bin/www
+ */
+
+/**
+ * Require modules.
+ */
+const app = require('../app');
+const http = require('http');
+
+/**
+ * Set port.
+ */
+const port = PER.config.app.port;
+app.set('port', port);
+
+/**
+ * Create and set server.
+ */
+const server = http.createServer(app);
+const io = require('socket.io').listen(server);
+server.listen(port);
+
+PER.model.sequelize.sync().then(() => {
+    /**
+     * Handle error on connection.
+     */
+    server.on('error', error => {
+        if (error.syscall !== 'listen') {
+            throw error;
+        }
+
+        switch (error.code) {
+            case 'EACCES':
+                PER.log.error(`Port ${port} requires elevated privileges`);
+                break;
+            case 'EADDRINUSE':
+                PER.log.error(`Port ${port} is already in use`);
+                break;
+            default:
+                PER.log.error('Unknow error.code');
+        }
+        throw error;
+    });
+
+    /**
+     * Show listening info.
+     */
+    server.on('listening', () => {
+        const addr = this.address();
+        const bind = typeof addr === 'string'
+            ? 'pipe ' + addr
+            : 'port ' + addr.port;
+        PER.log.info('Listening on ' + bind);
+    });
+
+    /**
+     * Handle events on connection.
+     */
+    io.on('connection', socket => {
+        socket.on('disconnect', () => {
+            // Handle event
+        });
+
+        socket.on('chatSendMsg', (msg, user) => {
+            io.emit('chatSendMsg', msg, user);
+        });
+    });
+});
+
+/**
+ * Export module for development enviroment.
+ */
+if (PER.config.app.env === 'development') {
+    module.exports = server;
+}

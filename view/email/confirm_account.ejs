@@ -1,0 +1,7 @@
+<%- i18n._dear %> <b><%- user.getDisplayName() %></b>
+<br/><br/>
+<%- i18n.msgEmailConfirmAccount %>
+<br/><br/>
+<a href="<%- url %>signup/confirm/<%- user.activation_token %>/<%- user.email %>">
+    <%- i18n._confirmAccount %>
+</a>

@@ -1,6 +1,8 @@
 # Demo
 [Express](http://expressjs.com/) app example.
 
+[Live demo](https://express-demo-alditis.herokuapp.com)
+
 #### Included modules:
 * [bycript](https://github.com/kelektiv/node.bcrypt.js): Hash password.
 * [ejs](https://github.com/mde/ejs): View engine.

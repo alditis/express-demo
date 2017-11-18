@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="logo-120x120.svg"
+   inkscape:export-filename="/home/alditis/Documentos/Desarrollo/workspaces/node/prueba/public/img/logo.png"
+   inkscape:export-xdpi="100"
+   inkscape:export-ydpi="100">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.57679761"
+     inkscape:cx="50.443967"
+     inkscape:cy="334.95744"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1313"
+     inkscape:window-height="744"
+     inkscape:window-x="53"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="false"
+     showborder="false" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:0;fill-rule:nonzero;stroke:none;stroke-width:2.04234028;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4136"
+       width="120"
+       height="120"
+       x="-215.868"
+       y="929.8374"
+       inkscape:export-filename="/home/alditis/Documentos/Desarrollo/workspaces/node/demo/public/img/logo-120x120.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g4170"
+       transform="matrix(0.10905412,0,0,0.10905412,-186.88228,928.45564)"
+       inkscape:export-filename="/home/alditis/Documentos/Desarrollo/workspaces/node/demo/public/img/logo-120x120.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/alditis/Documentos/Desarrollo/workspaces/node/demo/public/img/logo-1024x1024.png"
+         transform="matrix(1.0598229,0,0,1.0598229,-567.54509,351.36059)"
+         id="g4146">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:244.51072693px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="663.5166"
+           y="240.74341"
+           id="text4417"
+           sodipodi:linespacing="125%"
+           inkscape:export-filename="/home/alditis/Documentos/Desarrollo/workspaces/node/demo/public/img/logo.png"
+           inkscape:export-xdpi="300.24664"
+           inkscape:export-ydpi="300.24664"><tspan
+             sodipodi:role="line"
+             id="tspan4419"
+             x="663.5166"
+             y="240.74341"
+             style="font-style:oblique;font-variant:normal;font-weight:600;font-stretch:normal;font-size:244.51072693px;line-height:125%;font-family:'Latin Modern Sans Demi Cond';-inkscape-font-specification:'Latin Modern Sans Demi Cond Semi-Bold Oblique';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1">Demo </tspan></text>
+        <path
+           sodipodi:type="star"
+           style="fill:#ffcd46;fill-opacity:1;stroke:none;stroke-width:0.40000001;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="path4741-4"
+           sodipodi:sides="5"
+           sodipodi:cx="330.77258"
+           sodipodi:cy="501.97012"
+           sodipodi:r1="4.1433206"
+           sodipodi:r2="2.0716603"
+           sodipodi:arg1="1.1760052"
+           sodipodi:arg2="1.8043237"
+           inkscape:flatsided="false"
+           inkscape:rounded="0"
+           inkscape:randomized="0"
+           d="m 332.36617,505.79473 -2.07299,-1.80918 -2.66557,0.68203 1.08004,-2.5306 -1.47235,-2.32434 2.74049,0.24518 1.7556,-2.11855 0.61368,2.68212 2.55737,1.01501 -2.36122,1.41247 z"
+           inkscape:transform-center-x="0.54562736"
+           inkscape:transform-center-y="-0.43628614"
+           transform="matrix(33.618534,-14.541207,14.541207,33.618534,-17889.158,-11911.504)"
+           inkscape:export-filename="/home/alditis/Documentos/Desarrollo/workspaces/node/demo/public/img/logo.png"
+           inkscape:export-xdpi="300.24664"
+           inkscape:export-ydpi="300.24664" />
+      </g>
+    </g>
+  </g>
+</svg>

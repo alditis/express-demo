@@ -2,7 +2,7 @@
     "name": "express-demo",
     "version": "0.0.1",
     "author": "alditis <alditis@gmail.com>",
-    "homepage": "",
+    "homepage": "express-demo-alditis.herokuapp.com",
     "description": "Express app demo. With social login, i18n, unit test, create doc, minify files, check format and syntax.",
     "keywords": [
         "bcrypt",

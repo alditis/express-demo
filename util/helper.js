@@ -269,28 +269,35 @@ const validate = (req, rule, ofBody = true) => {
     return {withErrors, data};
 };
 
+const getBoolean = function(val){
+    var falsy = /^(?:f(?:alse)?|no?|0+)$/i;
+
+    return !falsy.test(val) && !!val;
+};
+
 module.exports = {
     callbackEmail: callbackEmail,
     capitalize: capitalize,
+    compareHash: compareHash,
     dump: dump,
+    ejsRender: ejsRender,
+    error: error,
     generateUsername: generateUsername,
     generateUsernameProviderId: generateUsernameProviderId,
     getBaseUrl: getBaseUrl,
+    getBoolean: getBoolean,
+    getDBLogging: getDBLogging,
+    getHash: getHash,
     getProviderName: getProviderName,
     getToken: getToken,
     getTokenExpires: getTokenExpires,
-    isAuthenticated: isAuthenticated,
     inSession: inSession,
+    isAuthenticated: isAuthenticated,
+    isHiddenPath: isHiddenPath,
     login: login,
     maskEmail: maskEmail,
     noCacheRoute: noCacheRoute,
     randomString: randomString,
     sanitize: sanitize,
-    getDBLogging: getDBLogging,
-    isHiddenPath: isHiddenPath,
-    compareHash: compareHash,
-    getHash: getHash,
-    error: error,
-    validate: validate,
-    ejsRender: ejsRender
+    validate: validate
 };

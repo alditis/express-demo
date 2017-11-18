@@ -17,9 +17,9 @@ if (process.env.NODE_ENV !== 'production') {
  */
 global.PER = {};
 
+PER.helper = require('./util/helper');
 PER.config = require('./config');
 PER.const = require('./util/const');
-PER.helper = require('./util/helper');
 PER.emailjs = require('./util/emailjs');
 PER.model = require('./db/model');
 PER.validate = require('./util/validate');

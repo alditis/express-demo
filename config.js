@@ -139,9 +139,8 @@ module.exports = {
      */
     session: {
         secret: process.env.SESSION_WORD,
-        // resave: false,
-        // saveUninitialized: true
         maxAge: parseInt(process.env.SESSION_AGE),
+        httpOnly: PER.helper.getBoolean(process.env.SESSION_ONLY_HTTP)
     },
 
     /**

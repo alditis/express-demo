@@ -12,8 +12,15 @@ module.exports = {
      * General for app
      * @member
      */
+    env: {
+        port: parseInt(process.env.PORT, 10),
+    },
+    /**
+     * General for app
+     * @member
+     */
     app: {
-        name: process.env.NAME,
+        name: process.env.APP_NAME,
         port: parseInt(process.env.PORT, 10),
         env: process.env.NODE_ENV,
         favicon: path.join(__dirname, 'public', 'img', 'favicon.ico'),

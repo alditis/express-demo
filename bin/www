@@ -14,7 +14,7 @@ const http = require('http');
 /**
  * Set port.
  */
-const port = PER.config.app.port;
+const port = PER.config.env.port;
 app.set('port', port);
 
 /**

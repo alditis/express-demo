@@ -1,4 +1,5 @@
-# Demo
+[![Express Demo Logo](https://express-demo-alditis.herokuapp.com/img/logo.png)](https://express-demo-alditis.herokuapp.com)
+
 [Express](http://expressjs.com/) app example.
 
 [Live demo](https://express-demo-alditis.herokuapp.com)

@@ -42,7 +42,8 @@
     },
     "private": true,
     "scripts": {
-        "start": "NODE_ENV=development node ./bin/www",
+        "start": "node ./bin/www",
+        "start-dev": "NODE_ENV=development node ./bin/www",
         "test": "NODE_ENV=development mocha ./test/*.js"
     },
     "dependencies": {

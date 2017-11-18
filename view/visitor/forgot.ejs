@@ -8,7 +8,7 @@
             <h3 class="mt-3 mb-3 text-center">
                 <%= i18n._resetYourPassword %>
             </h3>
-            <input type="text" id="email" name="email" size="35" maxlength="40" placeholder="<%= i18n._email %>" value="<%- f.email %>"/>
+            <input type="text" id="email" name="email" size="35" maxlength="40" placeholder="<%= i18n._email %>" value="<%- flash.email %>"/>
             <input type="submit" id="send" value="<%= i18n._sendPasswordResetEmail %>">
         </form>
 

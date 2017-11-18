@@ -90,7 +90,7 @@ module.exports = {
      * @member
      */
     flash: {
-        locals: 'f'
+        locals: 'flash'
     },
 
     /**

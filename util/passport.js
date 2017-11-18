@@ -66,6 +66,8 @@ const getLocalSignUpStrategy = () => {
                     return done(err, false);
                 }
 
+                PER.log.error(err.message);
+
                 if (err.message !== 'errInternalSendMail' &&
                         err.message !== 'errUsernameExists' &&
                         err.message.indexOf('errAccountExists') === -1) {

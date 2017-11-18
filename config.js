@@ -139,8 +139,9 @@ module.exports = {
      */
     session: {
         secret: process.env.SESSION_WORD,
-        resave: false,
-        saveUninitialized: true
+        // resave: false,
+        // saveUninitialized: true
+        maxAge: parseInt(process.env.SESSION_AGE),
     },
 
     /**

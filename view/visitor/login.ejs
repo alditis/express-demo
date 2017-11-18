@@ -5,7 +5,7 @@
         <% include ../general/msg %>
 
         <form method="post" action="/login">
-            <input type="text" id="email" name="email" size="35" maxlength="40" placeholder="<%= i18n._email %>" value="<%- f.email %>"/>
+            <input type="text" id="email" name="email" size="35" maxlength="40" placeholder="<%= i18n._email %>" value="<%- flash.email %>"/>
             <input type="password" id="password" name="password" size="15" maxlength="20" placeholder="<%= i18n._password %>"/>
             <input type="submit" id="send" value="<%= i18n._login %>">
         </form>

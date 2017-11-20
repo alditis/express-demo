@@ -61,7 +61,6 @@ $ cd express-demo
 $ npm install
 ```
 
-
 ### Configuration
 Create a file `.env` based on `.env.example` and add settings:
 * Port.

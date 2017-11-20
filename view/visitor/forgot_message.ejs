@@ -8,9 +8,10 @@
         <% include ../general/logo %>
 
         <div class="max-auto text-center clearfix mt-3">
-            <h4 class="mt-3 mb-3 text-center">
+            <h4 class="mt-3 mb-3">
                 <%= i18n._resetYourPassword %>
             </h4>
+            <p><%= i18n._dear %> <b><%= user.getDisplayName(); %></b></p>
             <div class="alert alert-warning" role="alert">
                 <%- msg %>
             </div>

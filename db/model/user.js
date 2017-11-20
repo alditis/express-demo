@@ -437,7 +437,7 @@ module.exports = sequelize => {
         return this.email;
     };
 
-    if (PER.config.app.env === 'development') {
+    if (PER.config.env.name === PER.const.ENV.DEVELOPMENT) {
         User.sync({force: true});
     }
 

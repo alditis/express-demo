@@ -14,13 +14,23 @@ module.exports = grunt => {
         },
         exec: {
             eslint: {
-                cmd: 'eslint *.js bin/www */*.js */*/*.js --quiet -o log/eslint.log'
+
+                /**
+                 * For alternative use global: sudo npm install -g eslint
+                 * Remove of cmd: 'node_modules/.bin/'
+                 */
+                cmd: 'node_modules/.bin/eslint *.js bin/www */*.js */*/*.js --quiet -o log/eslint.log'
             },
             minGeneral: {
-                cmd: 'uglifyjs -cm -o public/js/general.min.js -- public/js/general.js'
+
+                /**
+                 * For alternative use global: sudo npm install -g uglify-es
+                 * Remove of cmd: 'node_modules/.bin/'
+                 */
+                cmd: 'node_modules/.bin/uglifyjs -cm -o public/js/general.min.js -- public/js/general.js'
             },
             test: {
-                cmd: 'NODE_ENV=test mocha test/*.js'
+                cmd: 'npm test'
             }
         },
         jsdoc: {

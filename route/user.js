@@ -16,7 +16,7 @@ const router = express.Router();
  * @param {function} middleware - Function for logout process
  */
 router.get('/logout', (req, res) => {
-    req.session = null
+    req.session = null;
     res.redirect('/login');
 });
 

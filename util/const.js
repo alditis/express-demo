@@ -35,6 +35,12 @@ const TOKEN = {
     ACTIVATION: 2
 };
 
+const ENV = {
+    DEVELOPMENT: 'development',
+    TEST: 'test',
+    PRODUCTION: 'production'
+};
+
 module.exports = {
     CURRENT_YEAR: current.getFullYear(),
     USERNAME_SEPARATOR: '.',
@@ -50,5 +56,6 @@ module.exports = {
     LIMIT_ID_FACEBOOK: -5,
     LIMIT_MSG_ERROR: 3,
     DB: DB,
-    TOKEN: TOKEN
+    TOKEN: TOKEN,
+    ENV: ENV
 };

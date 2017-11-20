@@ -13,6 +13,16 @@ const bcrypt = require('bcrypt');
 const http = require('http');
 const ejs = require('ejs');
 
+const login = (req, res, user) => {
+    req.login(user, err => {
+        if (err) {
+            PER.log.error(err.message);
+            throw new Error('errInitSession');
+        }
+        return res.redirect('/user/' + PER.config.app.uriWelcome);
+    });
+};
+
 const callbackEmail = (err, initSession, req, res, user) => {
     if (err) {
         PER.log.error(err.message);
@@ -87,7 +97,7 @@ const dump = (arr, print = true, level = 0) => {
 
 const ejsRender = (str, data = null) => {
     return ejs.render(str, data);
-}
+};
 
 const error = (err, req, obj, uri = '', data = null) => {
     PER.log.error(err.message);
@@ -107,6 +117,14 @@ const error = (err, req, obj, uri = '', data = null) => {
         return obj.redirect(uri);
     }
     return obj(null, false);
+};
+
+const getUserFromEmail = email => {
+    return email.split('@')[0];
+};
+
+const getProviderName = providerType => {
+    return PER.const.PROVIDERS[providerType];
 };
 
 const generateUsername = user => {
@@ -142,15 +160,15 @@ const getBaseUrl = req => {
     return req.protocol + '://' + req.headers.host + '/';
 };
 
-const getBoolean = function(val){
-    var falsy = /^(?:f(?:alse)?|no?|0+)$/i;
+const getBoolean = value => {
+    const falsy = /^(?:f(?:alse)?|no?|0+)$/i;
 
-    return !falsy.test(val) && !!val;
+    return !falsy.test(value) && Boolean(value);
 };
 
-const getDBLogging = val => {
+const getDBLogging = value => {
     let result = false;
-    if (val.toLowerCase() !== "false") {
+    if (value.toLowerCase() !== "false") {
         result = console.log;
     }
     return result;
@@ -175,20 +193,12 @@ const getHash = value => {
         });
 };
 
-const getProviderName = providerType => {
-    return PER.const.PROVIDERS[providerType];
-};
-
 const getToken = () => {
     return crypto.randomBytes(PER.const.TOKEN_SIZE).toString('hex');
 };
 
 const getTokenExpires = () => {
     return Date.now() + PER.const.TOKEN_EXPIRES_TIME;
-};
-
-const getUserFromEmail = email => {
-    return email.split('@')[0];
 };
 
 const inSession = (req, res, next) => {
@@ -208,16 +218,6 @@ const isAuthenticated = (req, res, next) => {
 
 const isHiddenPath = path => {
     return (/(^|\/)\./g).test(path);
-};
-
-const login = (req, res, user) => {
-    req.login(user, err => {
-        if (err) {
-            PER.log.error(err.message);
-            throw new Error('errInitSession');
-        }
-        return res.redirect('/user/' + PER.config.app.uriWelcome);
-    });
 };
 
 const maskEmail = str => {

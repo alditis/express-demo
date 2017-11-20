@@ -78,7 +78,7 @@ router.post('/signup', (req, res, next) => {
     passport.authenticate('local-signup', (err, user) => {
         if (err) {
             if (err.message === 'errPendingActivateAccount') {
-                return res.render('visitor/send_again_activate_account', {email: req.flash('email')});
+                return res.render('visitor/send_activate_account', {email: req.flash('email')});
             }
             return next(err);
         }
@@ -174,7 +174,7 @@ router.get('/reset/:token/:email', (req, res) => {
     PER.model.user
         .findTokenOwner(data.token, data.email, PER.const.TOKEN.PASSWORD_RESET)
         .then(user => {
-            res.render('visitor/reset', {data: data});
+            res.render('visitor/reset', {data: data, user: user});
         })
         .catch(err => {
             PER.helper.error(err, req, res, '/forgot');
@@ -267,12 +267,12 @@ router.get('/auth/:provider/callback', (req, res, next) => {
             return PER.helper.error(err, req, res, '/login');
         }
 
-        if (!user) {
-            const errUser = new Error('errUserNotFound');
-            return PER.helper.error(errUser, req, res, '/login');
+        if (user) {
+            return PER.helper.login(req, res, user);
         }
 
-        return PER.helper.login(req, res, user);
+        const errUser = new Error('errUserNotFound');
+        return PER.helper.error(errUser, req, res, '/login');
     })(req, res, next);
 });
 

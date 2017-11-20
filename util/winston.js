@@ -13,7 +13,7 @@ const winston = require('winston');
  * @function createLogger
  * @param {JSON} options - Options of config
  */
-module.exports = winston.createLogger({
+const log = winston.createLogger({
     format: winston.format.simple(),
     transports: [
         new winston.transports.File(PER.config.winston.info),
@@ -21,3 +21,11 @@ module.exports = winston.createLogger({
         new winston.transports.File(PER.config.winston.debug)
     ]
 });
+
+if (PER.config.env.name !== PER.const.ENV.PRODUCTION) {
+    log.add(new winston.transports.Console({
+        format: winston.format.simple()
+    }));
+}
+
+module.exports = log;

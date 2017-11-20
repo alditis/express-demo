@@ -1,5 +1,5 @@
 module.exports = {
     STATUS: {OK: 200, FOUND: 302},
-    TIMEOUT: {FIRST: 4500, SECOND: 4000},
+    TIMEOUT: {FIRST: 7500, SECOND: 7000},
     LIMIT_MSG: 10
 };

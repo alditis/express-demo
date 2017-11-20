@@ -13,20 +13,28 @@ module.exports = {
      * @member
      */
     env: {
-        port: parseInt(process.env.PORT, 10),
+        name: process.env.NODE_ENV,
+        port: parseInt(process.env.PORT, 10)
     },
+
     /**
      * General for app
      * @member
      */
     app: {
         name: process.env.APP_NAME,
-        port: parseInt(process.env.PORT, 10),
-        env: process.env.NODE_ENV,
         favicon: path.join(__dirname, 'public', 'img', 'favicon.ico'),
         views: path.join(__dirname, 'view'),
         engine: 'ejs',
         public: path.join(__dirname, 'public'),
+
+        /**
+         * Defined the main route after login success
+         * Used too in view/footer.ejs:
+         *     var uriWelcome = "<%= PER.config.app.uriWelcome %>";
+         * Avoid back to welcome page after logout for example
+         * This value could to be changed for: home, init, etc
+         */
         uriWelcome: 'welcome'
     },
 
@@ -147,7 +155,7 @@ module.exports = {
      */
     session: {
         secret: process.env.SESSION_WORD,
-        maxAge: parseInt(process.env.SESSION_AGE),
+        maxAge: parseInt(process.env.SESSION_AGE, 10),
         httpOnly: process.env.SESSION_ONLY_HTTP
     },
 
@@ -170,6 +178,12 @@ module.exports = {
             name: 'debug',
             filename: path.join(__dirname, 'log', 'debug.log'),
             level: 'debug'
+        }
+        ,
+        sql: {
+            name: 'sql',
+            filename: path.join(__dirname, 'log', 'sql.log'),
+            level: 'info'
         }
     }
 };

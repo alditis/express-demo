@@ -10,12 +10,15 @@ const data = require('./util/data-test');
 const testSession = session(server);
 let userFound = null;
 
-if (PER.config.app.env === 'development') {
+if (PER.config.env.name === PER.const.ENV.DEVELOPMENT) {
     before(function(done) {
         const timeOut = helper.initTimeout(this, done);
 
         PER.model.user
             .sync({force: true})
+            .then(() => {
+                helper.succes(done, timeOut);
+            })
             .catch(err => {
                 helper.error('User table not created', err, done, timeOut);
             });

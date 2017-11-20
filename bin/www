@@ -74,6 +74,6 @@ PER.model.sequelize.sync().then(() => {
 /**
  * Export module for development enviroment.
  */
-if (PER.config.app.env === 'development') {
+if (PER.config.env.name === PER.const.ENV.DEVELOPMENT) {
     module.exports = server;
 }

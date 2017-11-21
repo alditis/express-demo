@@ -52,15 +52,6 @@ Are welcome suggestions, ideas, bugs identified, and colaborations. Greetings!
 ```bash
 $ npm install express-demo
 ```
-
-Or from GitHub:
-
-```bash
-$ git clone https://github.com/alditis/express-demo
-$ cd express-demo
-$ npm install
-```
-
 ### Configuration
 Create a file `.env` based on `.env.example` and add settings:
 * Port.

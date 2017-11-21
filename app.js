@@ -21,8 +21,8 @@ if (process.env.NODE_ENV !== PER.const.ENV.PRODUCTION) {
 /**
  * Add more modules that dependent of config.
  */
-PER.config = require('./config');
 PER.helper = require('./util/helper');
+PER.config = require('./config');
 PER.emailjs = require('./util/emailjs');
 PER.model = require('./db/model');
 PER.validate = require('./util/validate');

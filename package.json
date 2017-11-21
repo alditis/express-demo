@@ -40,7 +40,6 @@
         "type": "git",
         "url": "https://github.com/alditis/express-demo.git"
     },
-    "private": true,
     "scripts": {
         "start": "node ./bin/www",
         "start-dev": "NODE_ENV=development node ./bin/www",
@@ -72,7 +71,7 @@
         "randomstring": "^1.1.5",
         "req-flash": "0.0.3",
         "request": "^2.83.0",
-        "sequelize": "^4.22.8",
+        "sequelize": "^4.22.9",
         "serve-favicon": "^2.4.5",
         "socket.io": "^2.0.4",
         "validate.js": "^0.12.0",

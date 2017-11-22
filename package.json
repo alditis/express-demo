@@ -44,7 +44,7 @@
         "start": "node ./bin/www",
         "start-dev": "NODE_ENV=development node ./bin/www",
         "test": "NODE_ENV=development mocha ./test/*.js",
-        "test-navigation": "mocha test/navigation.js",
+        "test-navigation": "node_modules/mocha/bin/_mocha test/navigation.js",
         "grunt": "grunt",
         "sequelize": "sequelize"
     },

@@ -8,20 +8,30 @@ node_js:
   - "4.8"
   - "5.12"
   - "6.11"
-matrix:
-  include:
-    - node_js: "8"
-      env: "NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly"
-    - node_js: "9"
-      env: "NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly"
-  allow_failures:
-    # Allow the nightly installs to fail
-    - env: "NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly"
+services:
+  - mysql
+env:
+  - PORT=3000
+  - APP_NAME=Express Demo
+  - DB_HOST=127.0.0.1
+  - DB_DATABASE=test
+  - DB_USER=travis
+  - DB_PASS=
+  - DB_DIALECT=mysql
+  - DB_POOL_MAX=5
+  - DB_POOL_MIN=0
+  - DB_POOL_IDLE=10000
+  - DB_LOGGING=false
+  - SESSION_WORD=E3p53m0
+  - SESSION_AGE=86400000
+  - SESSION_ONLY_HTTP=false
+  - BCRYPT_SALT_ROUNDS=10
 sudo: false
 cache:
   directories:
     - node_modules
 before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
   # Skip updating shrinkwrap / lock
   - "npm config set shrinkwrap false"
 

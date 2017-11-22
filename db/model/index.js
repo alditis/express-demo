@@ -36,10 +36,11 @@ const sequelize = new Sequelize(
             deletedAt: 'deleted',
             version: 'locking'
         },
-        logging: PER.config.db.logging ?
-            sql => {
+        logging: PER.config.db.logging
+            ? sql => {
                 PER.log.info(sql);
-            } : PER.config.db.logging
+            }
+            : PER.config.db.logging
     }
 );
 

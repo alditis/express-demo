@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "author": "alditis <alditis@gmail.com>",
     "homepage": "express-demo-alditis.herokuapp.com",
-    "description": "Express app demo. With social login, i18n, unit test, create doc, minify files, check format and syntax.",
+    "description": "Express app demo. With social login, i18n, ORM, validate input data, unit test, create doc, minify files, check format and syntax.",
     "keywords": [
         "bcrypt",
         "dompurify",
@@ -43,7 +43,10 @@
     "scripts": {
         "start": "node ./bin/www",
         "start-dev": "NODE_ENV=development node ./bin/www",
-        "test": "NODE_ENV=development mocha ./test/*.js"
+        "test": "NODE_ENV=development mocha ./test/*.js",
+        "test-navigation": "NODE_ENV=development mocha test/navigation.js",
+        "grunt": "grunt",
+        "sequelize": "sequelize"
     },
     "dependencies": {
         "bcrypt": "^1.0.3",
@@ -71,7 +74,7 @@
         "randomstring": "^1.1.5",
         "req-flash": "0.0.3",
         "request": "^2.83.0",
-        "sequelize": "^4.22.9",
+        "sequelize": "^4.22.11",
         "serve-favicon": "^2.4.5",
         "socket.io": "^2.0.4",
         "validate.js": "^0.12.0",

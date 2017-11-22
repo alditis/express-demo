@@ -8,7 +8,7 @@
 
 ### Motivation
 When I began an project personal, I had very problems for integrate diferents modules
-for login, i18n, send email, ORM, test unit, enviroment variables, generate documentation,
+for login, i18n, send email, ORM, validate input data, test unit, enviroment variables, generate documentation,
 minified files, check code format and syntax, etc.
 
 Finally I could it solutions reviewing documentation officials, [GitHub](https://github.com),
@@ -29,7 +29,7 @@ Are welcome suggestions, ideas, bugs identified, and colaborations. Greetings!
 * [req-flash](https://github.com/maximilianschmitt/req-flash): Flash messages.
 * [sequelize](https://github.com/sequelize/sequelize): ORM.
 * [socket.io](https://github.com/socketio/socket.io): Chat and realtime options.
-* [validate.js](https://github.com/ansman/validate.js): Vaidate data input.
+* [validate.js](https://github.com/ansman/validate.js): Validate input data.
 * [winston](https://github.com/winstonjs/winston): Generate log.
 * crypto: Module Node.js for generate tokens.
 
@@ -70,7 +70,10 @@ The scripts is configured in the file `package.json`
 "scripts": {
     "start": "node ./bin/www",
     "start-dev": "NODE_ENV=development node ./bin/www",
-    "test": "NODE_ENV=development mocha ./test/*.js"
+    "test": "NODE_ENV=development mocha ./test/*.js",
+    "test-navigation": "NODE_ENV=development mocha test/navigation.js",
+    "grunt": "grunt",
+    "sequelize": "sequelize
 },
 ```
 
@@ -87,24 +90,6 @@ $ npm test
 ```
 
 ## Notes Additionals
-### Modules Global
-
-Modules `grunt` and `sequelize-cli` are installed localy for default.
-
-For example, for run `grunt` use the command:
-
-`node_modules/.bin/grunt`
-
-Other alternative is install it globaly.
-
-```bash
-sudo npm i -g grunt-cli
-```
-
-Then to run Grunt is `grunt` directly.
-
-This too is considered for `sequelize-cli`.
-
 ### Features
   * Login on form.
   * Login with Google, Facebook and Twitter. (Optional)
@@ -113,16 +98,14 @@ This too is considered for `sequelize-cli`.
   * i18n.
 
 ### Features dev
+  * Unit test. `npm test`
+  * Generate documentation: `npm run grunt jsdoc`. Documentation generated in `doc` folder.
+  * Check format and syntax code: `npm run grunt exec:eslint`. If exists erros, look `log/eslint.log` file.
+  * Minimize `public/js/general.js` file: `npm run grunt exec:minGeneral`. File generated: `public/js/general.min.js`.
+  * Minimize `public/css/main.css` file: `npm run grunt cssmin`. File generated: `public/css/main.min.js`.
+  * ORM Sequelize, example to create seeder: `npm run sequelize seed:generate -- --name "user-insert-test"`. File generated: `db/seeder/20171122140352-user-insert-test.js`.
 
-**Note:** Considering Grunt global for simplicity.
-
-  * Unit test.
-  * Generate documentation: `grunt jsdoc`. Documentation generated in `doc` folder.
-  * Check format and syntax code: `grunt exec:eslint`. If exists erros, look `log/eslint.log` file
-  * Minimize `public/js/general.js` file: `grunt exec:minGeneral`. File generated: `public/js/general.min.js`
-  * Minimize `public/css/main.css` file: `grunt cssmin`. File generated: `public/css/main.min.js`
-
-Or only `grunt` for run all tasks. Look `Gruntfile.js` for more details.
+Or only `npm run grunt` for run all tasks. Look `Gruntfile.js` for more tasks details.
 
 ### Social login (Optional)
 Create an app on Google, Facebook or Twitter and set in the file `.env`

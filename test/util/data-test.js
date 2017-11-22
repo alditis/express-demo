@@ -1,4 +1,5 @@
 module.exports = {
+
     /**
      * User for pass test.
      */

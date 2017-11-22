@@ -179,12 +179,6 @@ module.exports = {
             filename: path.join(__dirname, 'log', 'debug.log'),
             level: 'debug'
         }
-        ,
-        sql: {
-            name: 'sql',
-            filename: path.join(__dirname, 'log', 'sql.log'),
-            level: 'info'
-        }
     },
 
     /**

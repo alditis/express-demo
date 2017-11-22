@@ -14,20 +14,10 @@ module.exports = grunt => {
         },
         exec: {
             eslint: {
-
-                /**
-                 * For alternative use global: sudo npm install -g eslint
-                 * Remove of cmd: 'node_modules/.bin/'
-                 */
-                cmd: 'node_modules/.bin/eslint *.js bin/www */*.js */*/*.js --quiet -o log/eslint.log'
+                cmd: 'eslint *.js bin/www */*.js */*/*.js --quiet -o log/eslint.log'
             },
             minGeneral: {
-
-                /**
-                 * For alternative use global: sudo npm install -g uglify-es
-                 * Remove of cmd: 'node_modules/.bin/'
-                 */
-                cmd: 'node_modules/.bin/uglifyjs -cm -o public/js/general.min.js -- public/js/general.js'
+                cmd: 'uglifyjs -cm -o public/js/general.min.js -- public/js/general.js'
             },
             test: {
                 cmd: 'npm test'
@@ -50,5 +40,5 @@ module.exports = grunt => {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-jsdoc');
 
-    grunt.registerTask('default', ['cssmin', 'exec', 'jsdoc']);
+    grunt.registerTask('default', ['cssmin', 'jsdoc', 'exec']);
 };

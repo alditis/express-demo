@@ -1,3 +1,5 @@
+const chai = require('chai');
+const should = chai.should();
 const request = require('supertest');
 const server = require('../bin/www');
 const i18n = require('./util/i18n-test');
@@ -27,7 +29,7 @@ const list = [
     }
 ];
 
-describe('navegation', () => {
+describe('navigation', () => {
     list.forEach(item => {
         it(item.title, function(done) {
             request(server)

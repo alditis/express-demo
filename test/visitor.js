@@ -150,7 +150,6 @@ describe('visitor', () => {
                 .expect(constant.STATUS.OK)
                 .then(res => {
                     res.text.should.include(helper.limitMsg(i18n.msgConfirmResetPassword));
-                    PER.log.info(res.text);
                     helper.succes(done, timeOut);
                 })
                 .catch(err => {

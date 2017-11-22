@@ -97,7 +97,7 @@ module.exports = {
         host: process.env.EMAIL_HOST,
         ssl: PER.helper.getBoolean(process.env.EMAIL_SSL),
         port: process.env.EMAIL_PORT,
-        signup: process.env.EMAIL_SIGNUP,
+        signup: process.env.EMAIL_SENDER,
         tls: PER.helper.getBoolean(process.env.EMAIL_TLS)
     },
 
@@ -184,6 +184,16 @@ module.exports = {
             name: 'sql',
             filename: path.join(__dirname, 'log', 'sql.log'),
             level: 'info'
+        }
+    },
+
+    /**
+     * Data test
+     * @member
+     */
+    test: {
+        login: {
+            email: process.env.TEST_LOGIN_EMAIL
         }
     }
 };

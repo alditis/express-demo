@@ -3,14 +3,22 @@ module.exports = {
      * User for pass test.
      */
     userGood: {
-        username: 'your_username',
-        email: 'your@mail.com',
-        password: 'your_password'
+        username: 'myusername',
+        email: PER.config.test.login.email,
+        password: 'mypassword'
     },
 
     /**
      * User for not pass test.
      * The username "demo" is of size 4.
+     * Look file util/rule:
+     * signup: {
+     *       username: {
+     *          length: {
+     *              minimum: 5,
+     *              message: '^requiredUsername'
+     *           }
+     *      },
      */
     userBadUsername: {
         username: 'demo',
@@ -24,12 +32,12 @@ module.exports = {
      */
     userEmailNotExist: {
         username: 'not-required-change',
-        email: 'other@mail.com',
+        email: 'not-required-change@mail.com',
         password: 'not-required-change'
     },
 
     /**
      * New password for test "Forgot Password?".
      */
-    passwordNew: 'other_password'
+    passwordNew: 'not-required-change'
 };

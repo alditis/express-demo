@@ -2,7 +2,11 @@
 
 [Express](http://expressjs.com/) app example.
 
-#### Motivation
+## [Live demo](https://express-demo-alditis.herokuapp.com)
+
+## Introduction
+
+### Motivation
 When I began an project personal, I had very problems for integrate diferents modules
 for login, i18n, send email, ORM, test unit, enviroment variables, generate documentation,
 minified files, check code format and syntax, etc.
@@ -15,9 +19,7 @@ I hope that this example or part of it to be util for the community.
 Sure that this example could improve and to be complete with more functionality.
 Are welcome suggestions, ideas, bugs identified, and colaborations. Greetings!
 
-### [Live demo](https://express-demo-alditis.herokuapp.com)
-
-#### Included modules
+### Included modules
 * [bycript](https://github.com/kelektiv/node.bcrypt.js): Hash password.
 * [ejs](https://github.com/mde/ejs): View engine.
 * [emailjs](https://github.com/eleith/emailjs): Send emails.
@@ -31,7 +33,7 @@ Are welcome suggestions, ideas, bugs identified, and colaborations. Greetings!
 * [winston](https://github.com/winstonjs/winston): Generate log.
 * crypto: Module Node.js for generate tokens.
 
-#### Modules dev
+### Modules dev
 * [dotenv](https://github.com/motdotla/dotenv) and [dotenv-safe](https://github.com/rolodato/dotenv-safe): Load .env file.
 * [eslint](https://github.com/eslint/eslint): Verify code format and syntax.
 * [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin): Minimize css files.
@@ -41,12 +43,11 @@ Are welcome suggestions, ideas, bugs identified, and colaborations. Greetings!
 * [supertest](https://github.com/visionmedia/supertest) and [supertest-session](https://github.com/rjz/supertest-session): Complement for unit test.
 * [uglify-es](https://github.com/mishoo/UglifyJS2/tree/harmony): Minimize js files.
 
-## Requeriments
+## Setup
 
-### Enviroment
+### Requeriments
 * [Node.js](https://nodejs.org/)
-* [Express](http://expressjs.com/)
-* [MySQL](https://www.mysql.com/)
+* A database [MySQL](https://www.mysql.com/)
 
 ### Installation
 ```bash
@@ -81,25 +82,28 @@ $ npm run start-dev
 
 And to run the test suite on development enviroment:
 
-**Note:** First must edit the file `test/util/data-test.js` putting your test data.
-
 ```bash
 $ npm test
 ```
 
-#### Run Grunt local (Default)
+## Notes Additionals
+### Modules Global
+
+Modules `grunt` and `sequelize-cli` are installed localy for default.
+
+For example, for run `grunt` use the command:
+
 `node_modules/.bin/grunt`
 
-#### Run Grunt global (Optional)
+Other alternative is install it globaly.
 
-First install globaly:
 ```bash
 sudo npm i -g grunt-cli
 ```
 
-Then to call Grunt is `grunt` directly.
+Then to run Grunt is `grunt` directly.
 
-**Note:** This too can considered for: `sequelize-cli`
+This too is considered for `sequelize-cli`.
 
 ### Features
   * Login on form.
@@ -138,6 +142,7 @@ GG_CALLBACK=http://localhost:3000/auth/google/callback
 TW_CALLBACK=http://localhost:3000/auth/twitter/callback
 ```
 
+## Finally
 ### People
 Author: [alditis](https://github.com/alditis)
 
